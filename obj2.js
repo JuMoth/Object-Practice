@@ -1,15 +1,19 @@
 function Card(num, color) {
     this.num = num;
     this.color = color;
+    this.init();
 }
 
-Card.prototype.width = 100;
-Card.prototype.height = 150;
+Card.prototype = {
+    constructor: Card,
+    init: function() {
+        const mainElem = document.createElement('div');
+        mainElem.style.color = this.color;
+        mainElem.innerHTML = this.num;
+        mainElem.classList.add('card');
+        document.body.appendChild(mainElem);
+    }
+};
 
 const card1 = new Card(1, 'green');
 const card2 = new Card(7, 'blue');
-
-console.log(card1.color);
-console.log(card2.color);
-console.log(card1.width);
-console.log(card2.width);
